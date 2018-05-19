@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
 
-    public void Shoot()
+    public virtual void Shoot()
     {
         Projectile.Create(this, this.gameObject.transform.position, this.gameObject.transform.up, 10.0f);
     }
