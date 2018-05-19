@@ -5,7 +5,7 @@ using UnityEngine;
 public class ControlledShooter : Shooter
 {
     public string shoot_key;
-    public uint score_per_kill;
+    public uint score_per_large_asteroid_kill, score_per_medium_asteroid_kill, score_per_small_asteroid_kill;
 
     public override void Shoot()
     {
