@@ -5,6 +5,11 @@
 /[Bb]uilds/
 /Assets/AssetStoreTools*
 
+# Build Results
+*_Data*
+*.exe
+*.dll
+
 # Visual Studio 2015 cache directory
 /.vs/
 

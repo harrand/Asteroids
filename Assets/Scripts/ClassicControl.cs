@@ -20,6 +20,8 @@ public class ClassicControl : MonoBehaviour
         this.rigid_body.gravityScale = 0.0f;
         this.rigid_body.drag = 1.0f;
         this.GetRotationDirection = RotationDirection.NONE;
+
+        Application.targetFrameRate = 60;
     }
 	
 	void Update ()
