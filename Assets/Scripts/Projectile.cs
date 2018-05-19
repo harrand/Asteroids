@@ -26,6 +26,7 @@ public class Projectile : MonoBehaviour
     {
         Projectile projectile = Projectile.Create((Shooter) shooter, position, direction, speed, prefab_path);
         projectile.score_increase = shooter.score_per_kill;
+        Physics2D.IgnoreCollision(shooter.GetComponent<BoxCollider2D>(), projectile.GetComponent<BoxCollider2D>());
         return projectile;
     }
 

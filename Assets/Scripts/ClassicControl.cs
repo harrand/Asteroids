@@ -60,5 +60,9 @@ public class ClassicControl : MonoBehaviour
         }
         if (this.IsAccelerating)
             this.rigid_body.AddForce(this.gameObject.transform.up.normalized * this.acceleration_force);
+        this.rigid_body.angularDrag = 2.0f;
+
+        if (!this.gameObject.GetComponent<Damageable>().IsAlive())
+            Destroy(this.gameObject);
     }
 }
