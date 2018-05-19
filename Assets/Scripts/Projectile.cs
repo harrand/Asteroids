@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
         Projectile projectile = projectile_object.AddComponent<Projectile>();
         Physics2D.IgnoreCollision(shooter.GetComponent<BoxCollider2D>(), projectile.GetComponent<BoxCollider2D>());
         projectile.shooter = shooter;
-        projectile_object.GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x * speed, direction.y * speed);
+        projectile_object.GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x * speed, direction.y * speed) + shooter.GetComponent<Rigidbody2D>().velocity;
         return projectile;
     }
 
@@ -29,18 +29,15 @@ public class Projectile : MonoBehaviour
     }
 	
 	void OnTriggerStay2D(Collider2D other)
-    {
-        Debug.Log("some kind of collision happened!");
-        
+    {        
         Damageable damageable = other.gameObject.GetComponent<Damageable>();
         Debug.Log(other.name);
         /// The projectile collided with something that's Damageable!
-        if (damageable != null/* && other.gameObject != this.shooter.gameObject*/)
+        if (damageable != null)
         {
             Debug.Log("die");
             damageable.Damage(1);
             Destroy(this.gameObject);
         }
-        //
     }
 }
