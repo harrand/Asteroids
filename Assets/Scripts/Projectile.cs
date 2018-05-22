@@ -39,27 +39,37 @@ public class Projectile : MonoBehaviour
     {        
         Damageable damageable = other.gameObject.GetComponent<Damageable>();
         Rock rock = other.gameObject.GetComponent<Rock>();
-        /// The projectile collided with a rock!
-        if (damageable != null && rock != null)
+        UFO ufo = other.gameObject.GetComponent<UFO>();
+        ControlledShooter controlled_shooter = this.shooter.gameObject.GetComponent<ControlledShooter>();
+        /// The projectile collided with something!
+        if (damageable != null)
         {
             damageable.Damage(1);
-            ControlledShooter controlled_shooter = this.shooter.gameObject.GetComponent<ControlledShooter>();
-            if (controlled_shooter != null && controlled_shooter.GetComponent<Scored>() != null)
+            if (rock != null)
             {
-                uint value = 0;
-                switch(rock.rock_type)
+                if (controlled_shooter != null && controlled_shooter.GetComponent<Scored>() != null)
                 {
-                    case Rock.RockType.LARGE:
-                        value = controlled_shooter.score_per_large_asteroid_kill;
-                        break;
-                    case Rock.RockType.MEDIUM:
-                        value = controlled_shooter.score_per_medium_asteroid_kill;
-                        break;
-                    case Rock.RockType.SMALL:
-                        value = controlled_shooter.score_per_small_asteroid_kill;
-                        break;
+                    uint value = 0;
+                    switch (rock.rock_type)
+                    {
+                        case Rock.RockType.LARGE:
+                            value = controlled_shooter.score_per_large_asteroid_kill;
+                            break;
+                        case Rock.RockType.MEDIUM:
+                            value = controlled_shooter.score_per_medium_asteroid_kill;
+                            break;
+                        case Rock.RockType.SMALL:
+                            value = controlled_shooter.score_per_small_asteroid_kill;
+                            break;
+                    }
+                    controlled_shooter.GetComponent<Scored>().score += value;
                 }
-                controlled_shooter.GetComponent<Scored>().score += value;
+            }
+            else if(ufo != null)
+            {
+                controlled_shooter.GetComponent<Scored>().score += ufo.score_on_hit;
+                if (!ufo.damageable.IsAlive())
+                    controlled_shooter.GetComponent<Scored>().score += ufo.score_on_kill;
             }
             Destroy(this.gameObject);
         }
