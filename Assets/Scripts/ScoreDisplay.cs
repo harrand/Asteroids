@@ -19,6 +19,7 @@ public class ScoreDisplay : MonoBehaviour
 
     void Update()
     {
-        this.text.text = Convert.ToString(target.score);
+        if(this.target != null)
+            this.text.text = Convert.ToString(target.score);
     }
 }

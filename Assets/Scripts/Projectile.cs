@@ -36,7 +36,9 @@ public class Projectile : MonoBehaviour
     }
 	
 	void OnTriggerStay2D(Collider2D other)
-    {        
+    {
+        if (this.shooter == null)
+            return;
         Damageable damageable = other.gameObject.GetComponent<Damageable>();
         Rock rock = other.gameObject.GetComponent<Rock>();
         UFO ufo = other.gameObject.GetComponent<UFO>();
@@ -65,7 +67,7 @@ public class Projectile : MonoBehaviour
                     controlled_shooter.GetComponent<Scored>().score += value;
                 }
             }
-            else if(ufo != null)
+            else if(ufo != null && controlled_shooter != null)
             {
                 controlled_shooter.GetComponent<Scored>().score += ufo.score_on_hit;
                 if (!ufo.damageable.IsAlive())

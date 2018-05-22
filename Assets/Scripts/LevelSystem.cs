@@ -58,6 +58,8 @@ public class LevelSystem : MonoBehaviour
 	
 	void Update ()
     {
+        if (this.score_reader == null)
+            return;
         uint score_delta = this.score_reader.score - this.previous_score;
         if (this.GetCurrentLevel == null || this.IsCompleted)
             return;

@@ -19,6 +19,7 @@ public class LifeDisplay : MonoBehaviour
 
 	void Update()
     {
-        this.text.text = Convert.ToString(target.GetCurrentHealth);
+        if(this.target != null)
+            this.text.text = Convert.ToString(target.GetCurrentHealth);
 	}
 }
