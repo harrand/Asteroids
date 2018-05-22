@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class VisibilityToggle : MonoBehaviour
 {
-    GameObject canvas_object;
+    public GameObject canvas_object;
 
     void Start()
     {
-        this.canvas_object = GameObject.FindGameObjectWithTag("Escape Menu");
         this.SetInvisible();
     }
 
@@ -31,5 +31,10 @@ public class VisibilityToggle : MonoBehaviour
     public void ToggleVisible()
     {
         this.canvas_object.SetActive(!this.canvas_object.activeSelf);
+    }
+
+    public void ResetScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

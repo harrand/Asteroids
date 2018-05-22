@@ -19,4 +19,9 @@ public class GameLoader : MonoBehaviour
     {
         SceneManager.LoadScene("ClassicMainMenu");
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
