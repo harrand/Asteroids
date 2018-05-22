@@ -31,7 +31,6 @@ public class LevelSystem : MonoBehaviour
         uint current_level_id = this.GetCurrentLevel.GetLevelID;
         if(++current_level_id > this.GetMaxLevelID())
         {
-            Debug.Log("Ran out of levels!");
             this.IsCompleted = true;
             return;
         }
@@ -64,7 +63,6 @@ public class LevelSystem : MonoBehaviour
             return;
         if (score_delta >= this.GetCurrentLevel.GetScoreLimit && !this.IsCompleted)
         {
-            Debug.Log("score delta = " + score_delta + " / " + this.GetCurrentLevel.GetScoreLimit);
             this.previous_score = this.score_reader.score;
             this.NextLevel();
         }
@@ -96,17 +94,5 @@ public class LevelSystem : MonoBehaviour
             asteroid.transform.position = cam.ViewportToWorldPoint(this.RandomViewportPoint());
             asteroid.transform.parent = null;
         }
-    }
-
-    void LateUpdate()
-    {
-        // Process the level.
-        if (this.GetCurrentLevel == null || this.IsCompleted)
-        {
-            //Debug.Log("Level System idle. Either all levels are complete or a level has been incorrectly loaded");
-            return;
-        }
-        Debug.Log("Current level is " + this.GetCurrentLevel.GetLevelID);
-        //StartCoroutine(SpawnDelayedAsteroid());
     }
 }
