@@ -16,7 +16,7 @@ public class Rock : MonoBehaviour
         this.damageable = this.gameObject.GetComponent<Damageable>();
         Vector3 min = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
         Vector3 max = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
-        this.GetComponent<Rigidbody2D>().velocity = new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y), 0);
+        this.GetComponent<Rigidbody2D>().velocity = new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y), 0).normalized;
     }
 
     // Update is called once per frame
