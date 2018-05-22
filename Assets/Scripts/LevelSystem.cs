@@ -8,7 +8,7 @@ public class LevelSystem : MonoBehaviour
 {
     public Scored score_reader;
     private uint previous_score;
-    private bool IsCompleted;
+    public bool IsCompleted { get; private set; }
     private uint asteroid_count_cache;
 
     private SortedList<uint, Level> levels;
@@ -23,20 +23,19 @@ public class LevelSystem : MonoBehaviour
 
     public void LoadLevel(int level_id)
     {
-        if (level_id >= this.GetMaxLevelID())
-        {
-            Debug.Log("Level " + level_id + " is above the level maximum (" + this.GetMaxLevelID() + ")!");
-            this.IsCompleted = true;
-            return;
-        }
         this.GetCurrentLevel = this.levels.Values[level_id];
-        this.previous_score = this.score_reader.score;
     }
 
     public void NextLevel()
     {
         uint current_level_id = this.GetCurrentLevel.GetLevelID;
-        this.LoadLevel(Convert.ToInt32(++current_level_id));
+        if(++current_level_id > this.GetMaxLevelID())
+        {
+            Debug.Log("Ran out of levels!");
+            this.IsCompleted = true;
+            return;
+        }
+        this.LoadLevel(Convert.ToInt32(current_level_id));
     }
 
 	void Start ()
@@ -61,10 +60,12 @@ public class LevelSystem : MonoBehaviour
 	void Update ()
     {
         uint score_delta = this.score_reader.score - this.previous_score;
-        if (this.GetCurrentLevel == null)
+        if (this.GetCurrentLevel == null || this.IsCompleted)
             return;
         if (score_delta >= this.GetCurrentLevel.GetScoreLimit && !this.IsCompleted)
         {
+            Debug.Log("score delta = " + score_delta + " / " + this.GetCurrentLevel.GetScoreLimit);
+            this.previous_score = this.score_reader.score;
             this.NextLevel();
         }
 	}
@@ -102,7 +103,7 @@ public class LevelSystem : MonoBehaviour
         // Process the level.
         if (this.GetCurrentLevel == null || this.IsCompleted)
         {
-            Debug.Log("Level System idle. Either all levels are complete or a level has been incorrectly loaded");
+            //Debug.Log("Level System idle. Either all levels are complete or a level has been incorrectly loaded");
             return;
         }
         Debug.Log("Current level is " + this.GetCurrentLevel.GetLevelID);

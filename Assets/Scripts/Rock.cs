@@ -45,6 +45,11 @@ public class Rock : MonoBehaviour
 
     void LateUpdate()
     {
+        /// Sometimes collisions move the z-coordinate past the camera far-clip, so we lock the z coordinate at 0.
+        Vector3 position = this.gameObject.transform.position;
+        position.z = 0;
+        this.gameObject.transform.position = position;
+
         SpriteRenderer sprite_renderer = this.gameObject.GetComponent<SpriteRenderer>();
         switch (this.rock_type)
         {
