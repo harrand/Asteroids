@@ -138,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.25
   score_on_hit: 5
-  score_on_kill: 120
+  score_on_kill: 200
   shoot_rate: 2
   shoot_accuracy: 0.2
 --- !u!114 &114952898680060380
