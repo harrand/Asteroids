@@ -9,4 +9,14 @@ public class GameLoader : MonoBehaviour
     {
         SceneManager.LoadScene("ClassicAsteroids");
     }
+
+    public void LoadClassicInstructions()
+    {
+        SceneManager.LoadScene("ClassicInstructions");
+    }
+
+    public void LoadClassicMainMenu()
+    {
+        SceneManager.LoadScene("ClassicMainMenu");
+    }
 }

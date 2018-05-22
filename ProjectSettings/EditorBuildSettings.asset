@@ -9,5 +9,8 @@ EditorBuildSettings:
     path: Assets/ClassicMainMenu.unity
     guid: 1495f535521a5dc4693469fbfc152736
   - enabled: 1
+    path: Assets/ClassicInstructions.unity
+    guid: 57b8cd6ac36f07044b2ee5c828e97462
+  - enabled: 1
     path: Assets/ClassicAsteroids.unity
     guid: 2eb91d7ccac8d7245a6465e440b67aba
