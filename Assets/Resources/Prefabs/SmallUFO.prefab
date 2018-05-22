@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 50731252026492286}
   - component: {fileID: 114137902792805094}
   - component: {fileID: 114965226593786830}
+  - component: {fileID: 114505111734161042}
   m_Layer: 0
   m_Name: SmallUFO
   m_TagString: Untagged
@@ -118,6 +119,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4535963043afcb8449406fa84c7e15f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114505111734161042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1375647655203796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6f9390278125146bbbba7fb7a1ea04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114535931730975444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,8 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3829ec19ff3fb234f8d363392c84523e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_health: 12
-  current_health: 12
+  max_health: 6
+  current_health: 6
 --- !u!114 &114965226593786830
 MonoBehaviour:
   m_ObjectHideFlags: 1

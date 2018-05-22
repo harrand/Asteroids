@@ -14,7 +14,7 @@ public class ControlledShooter : Shooter
 
     void Update ()
     {
-        if (Input.GetKeyDown(shoot_key))
+        if (this.shoot_key != "" && Input.GetKeyDown(shoot_key))
             this.Shoot();
 	}
 }

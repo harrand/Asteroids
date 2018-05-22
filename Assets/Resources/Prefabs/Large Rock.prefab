@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114864582376607474}
   - component: {fileID: 61264441881054140}
   - component: {fileID: 50988364631657322}
+  - component: {fileID: 114710231584923438}
   m_Layer: 0
   m_Name: Large Rock
   m_TagString: Asteroid
@@ -103,6 +104,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max_health: 1
   current_health: 1
+--- !u!114 &114710231584923438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1571894159523584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6f9390278125146bbbba7fb7a1ea04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114839866094370480
 MonoBehaviour:
   m_ObjectHideFlags: 1

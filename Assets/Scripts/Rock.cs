@@ -5,6 +5,7 @@ using UnityEngine;
 public class Rock : MonoBehaviour
 {
     private Damageable damageable;
+    private Explodes explodes;
 
     public enum RockType { SMALL = 0, MEDIUM = 1, LARGE = 2 }
     public RockType rock_type;
@@ -14,6 +15,7 @@ public class Rock : MonoBehaviour
     void Start()
     {
         this.damageable = this.gameObject.GetComponent<Damageable>();
+        this.explodes = this.gameObject.GetComponent<Explodes>();
         Vector3 min = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
         Vector3 max = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
         this.GetComponent<Rigidbody2D>().velocity = new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y), 0).normalized;
@@ -37,8 +39,11 @@ public class Rock : MonoBehaviour
             }
             else
             {
-                // just die
-                Destroy(this.gameObject);
+                // time to just destroy the rock now.
+                if (this.explodes == null)
+                    Destroy(this.gameObject);
+                else
+                    this.explodes.Explode();
             }
         }
     }

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class UFO : MonoBehaviour
 {
     public Damageable damageable { get; private set; }
+    private Explodes explodes;
+
     public float speed;
     public uint score_on_hit, score_on_kill;
     public float shoot_rate, shoot_accuracy;
@@ -14,6 +16,8 @@ public class UFO : MonoBehaviour
     void Start()
     {
         this.damageable = this.gameObject.GetComponent<Damageable>();
+        this.explodes = this.gameObject.GetComponent<Explodes>();
+
         Vector3 min = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
         Vector3 max = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
         this.GetComponent<Rigidbody2D>().velocity = new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y), 0).normalized;
@@ -27,7 +31,10 @@ public class UFO : MonoBehaviour
         if (!this.damageable.IsAlive())
         {
             CancelInvoke();
-            Destroy(this.gameObject);
+            if (this.explodes == null)
+                Destroy(this.gameObject);
+            else
+                this.explodes.Explode();
         }
     }
 

@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114027866657753482}
   - component: {fileID: 61958801838363622}
   - component: {fileID: 50490074723372204}
+  - component: {fileID: 114255370336802200}
   m_Layer: 0
   m_Name: Small Rock
   m_TagString: Asteroid
@@ -105,6 +106,17 @@ MonoBehaviour:
   large_rock_sprite: {fileID: 21300000, guid: 0bf9b58780db7734da7ef3229b9016c3, type: 3}
   medium_rock_sprite: {fileID: 21300000, guid: 927598b1f4cbe874c9bab3a98d12b88a, type: 3}
   small_rock_sprite: {fileID: 21300000, guid: 8dd0ca94444a21748a08f0c79da5081f, type: 3}
+--- !u!114 &114255370336802200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1513472426760028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6f9390278125146bbbba7fb7a1ea04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114589852097291776
 MonoBehaviour:
   m_ObjectHideFlags: 1

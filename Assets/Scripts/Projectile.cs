@@ -69,9 +69,13 @@ public class Projectile : MonoBehaviour
             }
             else if(ufo != null && controlled_shooter != null)
             {
-                controlled_shooter.GetComponent<Scored>().score += ufo.score_on_hit;
-                if (!ufo.damageable.IsAlive())
-                    controlled_shooter.GetComponent<Scored>().score += ufo.score_on_kill;
+                Scored scored = controlled_shooter.GetComponent<Scored>();
+                if (scored != null)
+                {
+                    scored.score += ufo.score_on_hit;
+                    if (!ufo.damageable.IsAlive())
+                        controlled_shooter.GetComponent<Scored>().score += ufo.score_on_kill;
+                }
             }
             Destroy(this.gameObject);
         }
