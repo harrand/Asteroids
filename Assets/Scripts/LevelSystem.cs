@@ -54,6 +54,8 @@ public class LevelSystem : MonoBehaviour
         this.LoadLevel(0);
 
         InvokeRepeating("SpawnAsteroidIfNeeded", 0.5f, 1.0f / this.GetCurrentLevel.GetAsteroidRate);
+        InvokeRepeating("SpawnLargeUFOIfNeeded", 0.5f, 1.0f / this.GetCurrentLevel.GetLargeUFORate);
+        InvokeRepeating("SpawnSmallUFOIfNeeded", 0.5f, 1.0f / this.GetCurrentLevel.GetSmallUFORate);
     }
 	
 	void Update ()
@@ -82,6 +84,30 @@ public class LevelSystem : MonoBehaviour
         return asteroid_count;
     }
 
+    private uint GetProcessingLargeUFOCount()
+    {
+        uint largeUFO_count = 0;
+        foreach (GameObject game_object in SceneManager.GetActiveScene().GetRootGameObjects())
+        {
+            if (game_object.tag == "Large UFO")
+                largeUFO_count++;
+        }
+        largeUFO_count += this.asteroid_count_cache;
+        return largeUFO_count;
+    }
+
+    private uint GetProcessingSmallUFOCount()
+    {
+        uint smallUFO_count = 0;
+        foreach (GameObject game_object in SceneManager.GetActiveScene().GetRootGameObjects())
+        {
+            if (game_object.tag == "Small UFO")
+                smallUFO_count++;
+        }
+        smallUFO_count += this.asteroid_count_cache;
+        return smallUFO_count;
+    }
+
     private Vector3 RandomViewportPoint()
     {
         return new Vector3(UnityEngine.Random.Range(0.1f, 0.9f), UnityEngine.Random.Range(0.1f, 0.9f), UnityEngine.Random.Range(0.1f, 0.9f));
@@ -95,6 +121,28 @@ public class LevelSystem : MonoBehaviour
             Camera cam = Camera.main;
             asteroid.transform.position = cam.ViewportToWorldPoint(this.RandomViewportPoint());
             asteroid.transform.parent = null;
+        }
+    }
+
+    void SpawnLargeUFOIfNeeded()
+    {
+        if (!this.IsCompleted && this.GetProcessingLargeUFOCount() < this.GetCurrentLevel.GetLargeUFOMax)
+        {
+            GameObject ufo = Instantiate(Resources.Load("Prefabs/LargeUFO")) as GameObject;
+            Camera cam = Camera.main;
+            ufo.transform.position = cam.ViewportToWorldPoint(this.RandomViewportPoint());
+            ufo.transform.parent = null;
+        }
+    }
+
+    void SpawnSmallUFOIfNeeded()
+    {
+        if (!this.IsCompleted && this.GetProcessingSmallUFOCount() < this.GetCurrentLevel.GetSmallUFOMax)
+        {
+            GameObject ufo = Instantiate(Resources.Load("Prefabs/SmallUFO")) as GameObject;
+            Camera cam = Camera.main;
+            ufo.transform.position = cam.ViewportToWorldPoint(this.RandomViewportPoint());
+            ufo.transform.parent = null;
         }
     }
 }

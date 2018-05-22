@@ -29,7 +29,7 @@ GameObject:
   - component: {fileID: 114180677898196346}
   m_Layer: 0
   m_Name: LargeUFO
-  m_TagString: Untagged
+  m_TagString: Large UFO
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

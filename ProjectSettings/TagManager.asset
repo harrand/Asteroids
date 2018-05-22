@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Asteroid
-  - Escape Menu
+  - Large UFO
+  - Small UFO
   layers:
   - Default
   - TransparentFX
