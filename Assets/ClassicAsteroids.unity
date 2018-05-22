@@ -325,13 +325,109 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GetLevelID: 0
-  GetAsteroidMax: 3
+  GetAsteroidMax: 4
   GetAsteroidRate: 10
-  GetLargeUFOMax: 1
-  GetLargeUFORate: 0.1
+  GetLargeUFOMax: 0
+  GetLargeUFORate: 0
   GetSmallUFOMax: 0
   GetSmallUFORate: 0
   GetScoreLimit: 5000
+--- !u!1 &308259665
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 308259666}
+  - component: {fileID: 308259667}
+  m_Layer: 0
+  m_Name: Level 4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &308259666
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 308259665}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 559860152}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &308259667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 308259665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffafb3cac9d215c4baf11412ccc55762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GetLevelID: 4
+  GetAsteroidMax: 2
+  GetAsteroidRate: 1
+  GetLargeUFOMax: 2
+  GetLargeUFORate: 0.4
+  GetSmallUFOMax: 1
+  GetSmallUFORate: 0.2
+  GetScoreLimit: 10000
+--- !u!1 &365709865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 365709866}
+  - component: {fileID: 365709867}
+  m_Layer: 0
+  m_Name: Level 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &365709866
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 365709865}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 559860152}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &365709867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 365709865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffafb3cac9d215c4baf11412ccc55762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GetLevelID: 3
+  GetAsteroidMax: 2
+  GetAsteroidRate: 1
+  GetLargeUFOMax: 1
+  GetLargeUFORate: 0.4
+  GetSmallUFOMax: 1
+  GetSmallUFORate: 0.2
+  GetScoreLimit: 10000
 --- !u!1 &372190079
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,10 +471,10 @@ MonoBehaviour:
   GetLevelID: 2
   GetAsteroidMax: 7
   GetAsteroidRate: 5
-  GetLargeUFOMax: 7
-  GetLargeUFORate: 1
-  GetSmallUFOMax: 4
-  GetSmallUFORate: 0.5
+  GetLargeUFOMax: 1
+  GetLargeUFORate: 0.2
+  GetSmallUFOMax: 0
+  GetSmallUFORate: 0
   GetScoreLimit: 10000
 --- !u!114 &395424270 stripped
 MonoBehaviour:
@@ -433,6 +529,8 @@ Transform:
   - {fileID: 281892942}
   - {fileID: 891810213}
   - {fileID: 372190080}
+  - {fileID: 365709866}
+  - {fileID: 308259666}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -595,10 +693,10 @@ MonoBehaviour:
   GetLevelID: 1
   GetAsteroidMax: 5
   GetAsteroidRate: 1
-  GetLargeUFOMax: 4
-  GetLargeUFORate: 0.2
-  GetSmallUFOMax: 1
-  GetSmallUFORate: 0.1
+  GetLargeUFOMax: 0
+  GetLargeUFORate: 0
+  GetSmallUFOMax: 0
+  GetSmallUFORate: 0
   GetScoreLimit: 5000
 --- !u!1 &1281349529
 GameObject:

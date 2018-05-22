@@ -24,6 +24,10 @@ public class LevelSystem : MonoBehaviour
     public void LoadLevel(int level_id)
     {
         this.GetCurrentLevel = this.levels.Values[level_id];
+        this.CancelInvoke();
+        InvokeRepeating("SpawnAsteroidIfNeeded", 0.5f, 1.0f / this.GetCurrentLevel.GetAsteroidRate);
+        InvokeRepeating("SpawnLargeUFOIfNeeded", 0.5f, 1.0f / this.GetCurrentLevel.GetLargeUFORate);
+        InvokeRepeating("SpawnSmallUFOIfNeeded", 0.5f, 1.0f / this.GetCurrentLevel.GetSmallUFORate);
     }
 
     public void NextLevel()
@@ -34,6 +38,7 @@ public class LevelSystem : MonoBehaviour
             this.IsCompleted = true;
             return;
         }
+        this.score_reader.gameObject.GetComponent<Damageable>().Heal(10000);
         this.LoadLevel(Convert.ToInt32(current_level_id));
     }
 
@@ -52,10 +57,6 @@ public class LevelSystem : MonoBehaviour
             }
         }
         this.LoadLevel(0);
-
-        InvokeRepeating("SpawnAsteroidIfNeeded", 0.5f, 1.0f / this.GetCurrentLevel.GetAsteroidRate);
-        InvokeRepeating("SpawnLargeUFOIfNeeded", 0.5f, 1.0f / this.GetCurrentLevel.GetLargeUFORate);
-        InvokeRepeating("SpawnSmallUFOIfNeeded", 0.5f, 1.0f / this.GetCurrentLevel.GetSmallUFORate);
     }
 	
 	void Update ()
