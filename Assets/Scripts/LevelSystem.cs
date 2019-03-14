@@ -6,6 +6,7 @@ using System;
 
 public class LevelSystem : MonoBehaviour
 {
+    public bool is_nebula;
     public Scored score_reader;
     private uint previous_score;
     public bool IsCompleted { get; private set; }
@@ -28,6 +29,14 @@ public class LevelSystem : MonoBehaviour
         InvokeRepeating("SpawnAsteroidIfNeeded", 0.5f, 1.0f / this.GetCurrentLevel.GetAsteroidRate);
         InvokeRepeating("SpawnLargeUFOIfNeeded", 0.5f, 1.0f / this.GetCurrentLevel.GetLargeUFORate);
         InvokeRepeating("SpawnSmallUFOIfNeeded", 0.5f, 1.0f / this.GetCurrentLevel.GetSmallUFORate);
+        SpawnNebuli();
+        if (this.GetCurrentLevel.GetLevelID == 6)
+        {
+            Camera.main.orthographicSize = 25;
+            Debug.Log("INSANITY");
+            for (int i = 0; i < 20; i++)
+                SpawnNebuli();
+        }
     }
 
     public void NextLevel()
@@ -112,6 +121,16 @@ public class LevelSystem : MonoBehaviour
     private Vector3 RandomViewportPoint()
     {
         return new Vector3(UnityEngine.Random.Range(0.1f, 0.9f), UnityEngine.Random.Range(0.1f, 0.9f), UnityEngine.Random.Range(0.1f, 0.9f));
+    }
+
+    void SpawnNebuli()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            GameObject nebula = Instantiate(Resources.Load("Prefabs/Nebula")) as GameObject;
+            nebula.transform.position = Camera.main.ViewportToWorldPoint(this.RandomViewportPoint());
+            nebula.transform.parent = null;
+        }
     }
 
     void SpawnAsteroidIfNeeded()

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public uint damage = 1;
     private Shooter shooter;
     /**  The prefab being loaded MUST have:
         - Rigidbody Component
@@ -42,11 +43,12 @@ public class Projectile : MonoBehaviour
         Damageable damageable = other.gameObject.GetComponent<Damageable>();
         Rock rock = other.gameObject.GetComponent<Rock>();
         UFO ufo = other.gameObject.GetComponent<UFO>();
+        Nebula nebula = other.gameObject.GetComponent<Nebula>();
         ControlledShooter controlled_shooter = this.shooter.gameObject.GetComponent<ControlledShooter>();
         /// The projectile collided with something!
         if (damageable != null)
         {
-            damageable.Damage(1);
+            damageable.Damage(this.damage);
             if (rock != null)
             {
                 if (controlled_shooter != null && controlled_shooter.GetComponent<Scored>() != null)
@@ -77,7 +79,8 @@ public class Projectile : MonoBehaviour
                         controlled_shooter.GetComponent<Scored>().score += ufo.score_on_kill;
                 }
             }
-            Destroy(this.gameObject);
+            if(nebula == null)
+                Destroy(this.gameObject);
         }
     }
 }
